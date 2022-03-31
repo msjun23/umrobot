@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<robot name="xacro_properties" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <!-- duckpod dimension -->
+  <!-- <xacro:property name="base_length" value="0.500" />
+	<xacro:property name="base_width" value="0.230" />
+	<xacro:property name="base_height" value="0.01" />
+  <xacro:property name="base_mass" value="23.26" /> -->
+
+  <!-- Dimension of wheel -->
+	<xacro:property name="wheel_length" value="0.02" />
+	<xacro:property name="wheel_radius" value="0.103" />
+	<xacro:property name="wheel_x" value="0.25" />
+  <xacro:property name="wheel_y" value="0.051247243897480" />
+  <xacro:property name="wheel_z" value="0.015" />
+  <xacro:property name="wheel_mass" value="2.712173066159581" />
+    
+  <!-- Constant -->
+  <!-- <xacro:property name="color_silver"> -->
+    <material name="silver">
+      <color rgba="0.700 0.700 0.700 1.000"/>
+    </material>
+  <!-- </xacro:property> -->
+
+</robot>

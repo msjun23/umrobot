@@ -1,0 +1,37 @@
+<launch>
+  <!-- Argument -->
+  <arg name="paused" default="false" />
+  <arg name="use_sim_time" default="true" />
+  <arg name="gui" default="true" />
+  <arg name="headless" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="model" default="$(find umrobot_description)/urdf/umrobot.xacro" />
+  <arg name="x_pos" default="0.0" />
+  <arg name="y_pos" default="0.0" />
+  <arg name="z_pos" default="0.0" />
+  <arg name="yaw" default="0.0" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+
+  <!-- Spawn model -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" 
+        args="-urdf -param robot_description -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -Y $(arg yaw) -model robot_model" 
+        respawn="false" output="screen" />
+
+  <!-- gazebo launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <!-- <arg name="world_name" value="$(find umrobot_description)/worlds/.world" /> -->
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- State publisher -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
+        <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+
+</launch>

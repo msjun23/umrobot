@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+
+<!-- Kwangwoon University
+  Capstone Design-2022
+  Project: Universal Mobile Robot Platform
+  Model Designer: Taegyeom Gim
+  ROS Package editor: Seokjun Moon -->
+
+<robot name="umrobot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find umrobot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find umrobot_description)/urdf/umrobot_gazebo.xacro" />
+
+  <link name="base_footprint"/>
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_footprint" />
+    <child link="base_link" />
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="9.858128769194324e-06 3.224621528889134e-09 0.04149809081902185" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="0.183983" iyy="0.216397" izz="0.287255" ixy="-3e-06" iyz="-1e-06" ixz="6e-06"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Wheels -->
+  <link name="wheel_LF">
+    <inertial>
+      <origin xyz="-3.835820550079916e-14 -0.05124724389748092 5.204170427930421e-17" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="0.004501" iyy="0.007469" izz="0.004501" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.14 0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_LF.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.14 0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_LF.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_LF" type="continuous">
+    <origin xyz="-0.14 -0.2 -0.03" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_LF"/>
+    <axis xyz="0.0 1.0 0.0"/>
+  </joint>
+
+  <link name="wheel_RF">
+    <inertial>
+      <origin xyz="3.322342401190781e-14 0.05124724389748064 0.0" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="0.004501" iyy="0.007469" izz="0.004501" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.14 -0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_RF.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0.14 -0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_RF.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_RF" type="continuous">
+    <origin xyz="-0.14 0.2 -0.03" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_RF"/>
+    <axis xyz="0.0 1.0 0.0"/>
+  </joint>
+
+  <link name="wheel_LB">
+    <inertial>
+      <origin xyz="-3.83026943495679e-14 -0.05124724389748081 5.551115123125783e-17" rpy="0 0 0"/>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="0.004501" iyy="0.007469" izz="0.004501" ixy="0.0" iyz="0.0" ixz="-0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.14 0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_LB.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.14 0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_LB.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_LB" type="continuous">
+    <origin xyz="0.14 -0.2 -0.03" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_LB"/>
+    <axis xyz="0.0 1.0 0.0"/>
+  </joint>
+
+  <link name="wheel_RB">
+    <inertial>
+      <origin xyz="3.322342401190781e-14 0.05124724389748081 9.367506770274758e-17" rpy="0 0 0"/>
+      <mass value="2.712173066159581"/>
+      <inertia ixx="0.004501" iyy="0.007469" izz="0.004501" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.14 -0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_RB.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.14 -0.2 0.03" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://umrobot_description/meshes/wheel_joint_RB.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint_RB" type="continuous">
+    <origin xyz="0.14 0.2 -0.03" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="wheel_RB"/>
+    <axis xyz="0.0 1.0 0.0"/>
+  </joint>
+
+  <!-- RPLiDAR S1 Spec in VLP-16 model -->
+  <!-- <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" /> -->
+  <xacro:include filename="$(find umrobot_description)/urdf/laser_scan.xacro" />
+  <VLP-16 parent="base_link" name="velodyne" topic="/scan" hz="100" samples="1875" gpu="false">
+      <origin xyz="0.0 0.0 0.1" rpy="0 0 0" />
+  </VLP-16>
+  
+  <!-- D435 -->
+  <xacro:include filename="$(find realsense_ros_gazebo)/xacro/depthcam.xacro"/>
+  <xacro:realsense_d435 sensor_name="d435" parent_link="base_link" rate="100">
+      <origin xyz="0.225 0 0.20" rpy="0 0 0 " />
+  </xacro:realsense_d435>
+
+</robot>
