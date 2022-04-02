@@ -37,6 +37,6 @@
 
   <!-- RViz -->
     <arg name="rviz" default="false"/>
-    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find umrobot_description)/rviz/umrobot_gazebo.rviz" />
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find umrobot_description)/rviz/gazebo_default.rviz" />
 
 </launch>
