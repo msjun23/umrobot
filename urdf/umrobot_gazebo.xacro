@@ -23,8 +23,8 @@
       <minDepth>0.001</minDepth>
       <!-- <maxVel>1.0</maxVel> -->
 
-      <!-- <selfCollide>true</selfCollide>
-      <gravity>true</gravity> -->
+      <selfCollide>true</selfCollide>
+      <gravity>true</gravity>
     </gazebo>
 
     <gazebo reference="wheel_RF">
@@ -37,8 +37,8 @@
       <minDepth>0.001</minDepth>
       <!-- <maxVel>1.0</maxVel> -->
 
-      <!-- <selfCollide>true</selfCollide>
-      <gravity>true</gravity> -->
+      <selfCollide>true</selfCollide>
+      <gravity>true</gravity>
     </gazebo>
 
     <gazebo reference="wheel_LB">
@@ -51,8 +51,8 @@
       <minDepth>0.001</minDepth>
       <!-- <maxVel>1.0</maxVel> -->
 
-      <!-- <selfCollide>true</selfCollide>
-      <gravity>true</gravity> -->
+      <selfCollide>true</selfCollide>
+      <gravity>true</gravity>
     </gazebo>
 
     <gazebo reference="wheel_RB">
@@ -65,8 +65,8 @@
       <minDepth>0.001</minDepth>
       <!-- <maxVel>1.0</maxVel> -->
 
-      <!-- <selfCollide>true</selfCollide>
-      <gravity>true</gravity> -->
+      <selfCollide>true</selfCollide>
+      <gravity>true</gravity>
     </gazebo>
   </xacro:macro>
 
