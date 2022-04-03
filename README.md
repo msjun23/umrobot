@@ -13,7 +13,21 @@
 ||2D LiDAR|
 
 # Requirement
-[Intel RealSense gazebo plugin](https://github.com/nilseuropa/realsense_ros_gazebo) has to be installed.
+Sensor plugin must be installed.
+
+- [Intel RealSense gazebo plugin](https://github.com/nilseuropa/realsense_ros_gazebo)
+```bash
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/nilseuropa/realsense_ros_gazebo.git
+$ cd ~/catkin_ws && catkin_make
+```
+
+- [velodyne_description](https://bitbucket.org/DataspeedInc/velodyne_simulator/src/master/)
+```bash
+$ cd ~/catkin_ws/src
+$ git clone https://bitbucket.org/DataspeedInc/velodyne_simulator.git
+$ cd ~/catkin_ws && catkin_make
+```
 
 # About LiDAR
 Used Velodyne VLP-16 3d model, but applied [RPLiDAR S1](https://www.slamtec.com/en/Lidar/S1) spcification.
