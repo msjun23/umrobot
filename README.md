@@ -40,6 +40,8 @@ Used Velodyne VLP-16 3d model, but applied [RPLiDAR S1](https://www.slamtec.com/
 
 **2022.04.02**: Updated Nuri building gazebo world(not real size).
 
-![gazebo](images/nuri_gazebo.png)
+**2022.04.04**: Add doors
 
-![rviz](images/nuri_rviz.png)
+![gazebo](images/nuri_gazebo2.png)
+
+![rviz](images/nuri_rviz2.png)
