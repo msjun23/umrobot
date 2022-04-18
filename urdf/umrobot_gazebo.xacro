@@ -70,7 +70,7 @@
     </gazebo>
   </xacro:macro>
 
-  <gazebo>
+  <!-- <gazebo>
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
       <updateRate>100</updateRate>
       <leftFrontJoint>joint_LF</leftFrontJoint>
@@ -86,6 +86,15 @@
       <robotBaseFrame>base_footprint</robotBaseFrame>
       <publishOdomTF>true</publishOdomTF>
       <broadcastTF>false</broadcastTF>
+    </plugin>
+  </gazebo> -->
+  <gazebo>
+    <plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>wheel_odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>50.0</odometryRate>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
 
