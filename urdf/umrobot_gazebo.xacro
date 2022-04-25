@@ -77,8 +77,8 @@
       <leftRearJoint>joint_LB</leftRearJoint>
       <rightFrontJoint>joint_RF</rightFrontJoint>
       <rightRearJoint>joint_RB</rightRearJoint>
-      <wheelSeparation>${2*wheel_y}</wheelSeparation>
-      <wheelDiameter>${2*wheel_radius}</wheelDiameter>
+      <wheelSeparation>${2*0.051247243897480}</wheelSeparation>
+      <wheelDiameter>${2*0.103}</wheelDiameter>
       <torque>20</torque>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>wheel_odom</odometryTopic>
@@ -95,6 +95,8 @@
       <odometryFrame>odom</odometryFrame>
       <odometryRate>50.0</odometryRate>
       <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishOdomTF>true</publishOdomTF>
+      <broadcastTF>false</broadcastTF>
     </plugin>
   </gazebo>
 
