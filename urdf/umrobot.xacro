@@ -146,6 +146,14 @@
       <axis xyz="0.0 1.0 0.0"/>
     </joint>
 
+    <!-- IMU -->
+    <link name="imu_link"/>
+    <joint name="imu_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="imu_link"/>
+      <origin xyz="0.225 0 0.20" rpy="0 0 0"/>
+    </joint>
+
     <!-- RPLiDAR S1 Spec in VLP-16 model -->
     <!-- <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro" /> -->
     <xacro:include filename="$(find umrobot_description)/urdf/laser_scan.xacro" />
