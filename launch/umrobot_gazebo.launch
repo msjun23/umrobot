@@ -29,14 +29,16 @@
     <arg name="debug" value="$(arg debug)"/>
   </include>
 
-  <!-- State publisher -->
-    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
-        <param name="publish_frequency" type="double" value="50.0" />
-    </node>
+  <arg name="rviz" default="false"/>
+  <group if="$(arg rviz)">
+    <!-- RViz -->
+    <node pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find umrobot_description)/rviz/gazebo_default.rviz" />
 
-  <!-- RViz -->
-    <arg name="rviz" default="false"/>
-    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find umrobot_description)/rviz/gazebo_default.rviz" />
+    <!-- State publisher -->
+    <node pkg="joint_state_publisher" name="joint_state_publisher" type="joint_state_publisher" />
+    <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" output="screen" >
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+  </group>
 
 </launch>
