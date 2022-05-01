@@ -1,83 +1,64 @@
 <?xml version="1.0" ?>
 
 <robot name="umrobot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <gazebo reference="base_link">
+    <material>Gazebo/Silver</material>
+    <!-- <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity> -->
+  </gazebo>
 
-  <!-- <xacro:property name="body_color" value="Gazebo/Silver" /> -->
+  <gazebo reference="wheel_LF">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
 
-  <xacro:macro name="umrobot_sim">
-    <!-- <gazebo reference="base_link">
-      <material>${body_color}</material>
-      <mu1>0.2</mu1>
-      <mu2>0.2</mu2>
-      <selfCollide>true</selfCollide>
-      <gravity>true</gravity>
-    </gazebo> -->
+  <gazebo reference="wheel_RF">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
 
-    <gazebo reference="wheel_LF">
-      <fdir1>1 0 0</fdir1>
-      <mu1>2.0</mu1>
-      <mu2>0.2</mu2>
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      
-      <minDepth>0.001</minDepth>
-      <!-- <maxVel>1.0</maxVel> -->
+  <gazebo reference="wheel_LB">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
 
-      <selfCollide>true</selfCollide>
-      <gravity>true</gravity>
-    </gazebo>
-
-    <gazebo reference="wheel_RF">
-      <fdir1>1 0 0</fdir1>
-      <mu1>2.0</mu1>
-      <mu2>0.2</mu2>
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      
-      <minDepth>0.001</minDepth>
-      <!-- <maxVel>1.0</maxVel> -->
-
-      <selfCollide>true</selfCollide>
-      <gravity>true</gravity>
-    </gazebo>
-
-    <gazebo reference="wheel_LB">
-      <fdir1>1 0 0</fdir1>
-      <mu1>2.0</mu1>
-      <mu2>0.2</mu2>
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      
-      <minDepth>0.001</minDepth>
-      <!-- <maxVel>1.0</maxVel> -->
-
-      <selfCollide>true</selfCollide>
-      <gravity>true</gravity>
-    </gazebo>
-
-    <gazebo reference="wheel_RB">
-      <fdir1>1 0 0</fdir1>
-      <mu1>2.0</mu1>
-      <mu2>0.2</mu2>
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      
-      <minDepth>0.001</minDepth>
-      <!-- <maxVel>1.0</maxVel> -->
-
-      <selfCollide>true</selfCollide>
-      <gravity>true</gravity>
-    </gazebo>
-  </xacro:macro>
+  <gazebo reference="wheel_RB">
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>500000.0</kp>
+    <kd>10.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
 
   <gazebo reference="imu_link">
     <sensor type="imu" name="imu">
       <always_on>true</always_on>
       <visualize>false</visualize>
     </sensor>
-    <material>
-      <color rgba="0.5 0.5 0.5 1.0"/>
-    </material>
+    <material>Gazebo/Silver</material>
   </gazebo>
 
   <!-- <gazebo>
@@ -101,7 +82,7 @@
   <gazebo>
     <plugin name="mecanum_controller" filename="libgazebo_ros_planar_move.so">
       <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>wheel_odom</odometryTopic>
+      <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometryRate>50.0</odometryRate>
       <robotBaseFrame>base_footprint</robotBaseFrame>
@@ -113,7 +94,7 @@
   <!-- <gazebo>
     <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
       <alwaysOn>true</alwaysOn>
-      <bodyName>base_footprint</bodyName>
+      <bodyName>imu_link</bodyName>
       <topicName>imu</topicName>
       <serviceName>imu_service</serviceName>
       <gaussianNoise>0.0</gaussianNoise>
@@ -129,7 +110,7 @@
       <topicName>imu</topicName>
       <serviceName>imu_service</serviceName>
       <gaussianNoise>0.0</gaussianNoise>
-      <updateRate>20.0</updateRate>
+      <updateRate>0</updateRate>
       <imu>
         <noise>
           <type>gaussian</type>

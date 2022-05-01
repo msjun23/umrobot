@@ -12,9 +12,9 @@
 
     <link name="base_footprint"/>
     <joint name="base_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <parent link="base_footprint" />
-      <child link="base_link" />
+      <parent link="base_footprint"/>
+      <child link="base_link"/>
+      <origin xyz="0 0 0.01" rpy="0 0 0" />
     </joint>
     <link name="base_link">
       <inertial>
