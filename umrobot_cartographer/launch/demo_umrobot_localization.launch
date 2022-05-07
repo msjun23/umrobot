@@ -26,9 +26,9 @@
   <arg name="load_state_filename" default="nuri" />
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
-          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_directory $(find umrobot_cartographer)/configuration_files
           -configuration_basename umrobot_localization.lua
-          -load_state_filename $(find cartographer_ros)/map/$(arg load_state_filename).pbstream"
+          -load_state_filename $(find umrobot_cartographer)/map/$(arg load_state_filename).pbstream"
       output="screen">
     <remap from="echoes" to="horizontal_laser_2d" />
   </node>

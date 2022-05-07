@@ -27,9 +27,9 @@
 
     <!--Cartographer node with custom configuration file, premade pbstreakm-->
     <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
-        -configuration_directory $(find cartographer_ros)/configuration_files
+        -configuration_directory $(find umrobot_cartographer)/configuration_files
         -configuration_basename umrobot_localization.lua
-        -load_state_filename $(find cartographer_ros)/maps/$(arg load_state_filename).pbstream" output="screen"> </node>
+        -load_state_filename $(find umrobot_cartographer)/maps/$(arg load_state_filename).pbstream" output="screen"> </node>
 
     <!--node which converts Cartographer map into ROS occupancy grid map.-->
     <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros" type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
@@ -38,5 +38,5 @@
     <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_to_scan" args="0 0 0.1 0 0 0 base_footprint velodyne" /> -->
 
     <!-- run the preset rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find cartographer_ros)/configuration_files/umrobot_localization.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find umrobot_cartographer)/configuration_files/umrobot_localization.rviz" />
 </launch>
