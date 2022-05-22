@@ -17,6 +17,10 @@
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
 
+  <!-- run the tf publisher -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_scan" args="0 0 0 0 0 0 base_footprint laser 100" /> -->
+
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"

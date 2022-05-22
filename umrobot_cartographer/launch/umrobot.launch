@@ -31,7 +31,7 @@
 
   <!-- run the tf publisher -->
   <node pkg="tf" type="static_transform_publisher" name="base_to_scan" args="0 0 0 0 0 0 base_footprint laser 100" />
-  <node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0.225 0 0.20 -1.5707963 1.5707963 0 base_footprint camera_imu_optical_frame 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="base_to_imu" args="0.225 0 0.20 -1.5707963 1.5707963 0 base_footprint camera_imu_optical_frame 100" /> -->
 
   <!-- run the preset rviz -->
   <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find umrobot_cartographer)/configuration_files/umrobot.rviz" />
