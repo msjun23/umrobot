@@ -26,7 +26,7 @@
       <param name="publish_frequency" type="double" value="50.0" />
     </node> -->
 
-    <!--Cartographer node with custom configuration file, premade pbstreakm-->
+    <!--Cartographer node with custom configuration file, premade pbstream-->
     <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="
         -configuration_directory $(find umrobot_cartographer)/configuration_files
         -configuration_basename umrobot_localization.lua
