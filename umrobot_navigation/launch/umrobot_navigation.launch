@@ -5,6 +5,8 @@
   <arg name="open_rviz" default="true"/>
   <arg name="move_forward_only" default="false"/>
 
+  <param name="/use_sim_time" value="true" />
+
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
@@ -17,9 +19,12 @@
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
 
+  <!-- rtabmap odometry to base_footprint -->
+  <node pkg="umrobot_navigation" type="odom_to_tf.py" name="odom_to_tf"/>
+
   <!-- run the tf publisher -->
-  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 100" />
-  <node pkg="tf" type="static_transform_publisher" name="base_to_scan" args="0 0 0 0 0 0 base_footprint laser 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 100" />
+  <node pkg="tf" type="static_transform_publisher" name="base_to_scan" args="0 0 0 0 0 0 base_footprint laser 100" />
 
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
