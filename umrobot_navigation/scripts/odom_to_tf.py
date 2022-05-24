@@ -4,13 +4,14 @@ import rospy
 import tf2_ros
 
 from nav_msgs.msg import Odometry
-from geometry_msgs.msg import TransformStamped
+from geometry_msgs.msg import TransformStamped, Pose, Point, Quaternion, Twist, Vector3
 
 class node:
     def __init__(self):
         rospy.init_node('odom_to_tf', anonymous=True)
         
         rospy.Subscriber('/vins_estimator/odometry', Odometry, self.OdomSubscriber)
+        self.odom_pub = rospy.Publisher('/odom', Odometry, queue_size=100)
         
         rospy.spin()
         
@@ -49,7 +50,27 @@ class node:
         t2.transform.rotation.w = 0.641
         br.sendTransform(t)
         br.sendTransform(t2)
-        #t*t2
+        
+        
+        # next, we'll publish the odometry message over ROS
+        odom = Odometry()
+        odom.header.frame_id = "odom"
+        odom.child_frame_id = "base_footprint"
+
+        # set the position
+        odom.pose.pose.position.x = data.pose.pose.position.x - 0.225
+        odom.pose.pose.position.y = data.pose.pose.position.y
+        odom.pose.pose.position.z = data.pose.pose.position.z 
+        
+        odom.pose.pose.orientation.x = 
+        odom.pose.pose.orientation.y = 
+        odom.pose.pose.orientation.z = 
+        odom.pose.pose.orientation.w = 
+
+        # set the velocity
+
+        # publish the message
+        self.odom_pub.publish(odom)
 
 if __name__ == '__main__':
     n = node()
