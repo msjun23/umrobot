@@ -19,7 +19,7 @@ class node:
         br = tf2_ros.TransformBroadcaster()
         t = TransformStamped()
 
-        t.header.stamp = rospy.Time.now()
+        t.header.stamp = data.header.stamp
         t.header.frame_id = "odom"
         t.child_frame_id = "tmp"
         
@@ -35,7 +35,7 @@ class node:
         
         t2 = TransformStamped()
 
-        t2.header.stamp = rospy.Time.now()
+        t2.header.stamp = data.header.stamp
         t2.header.frame_id = "tmp"
         t2.child_frame_id = "base_footprint"
         
@@ -52,25 +52,25 @@ class node:
         br.sendTransform(t2)
         
         
-        # next, we'll publish the odometry message over ROS
-        odom = Odometry()
-        odom.header.frame_id = "odom"
-        odom.child_frame_id = "base_footprint"
+        # # next, we'll publish the odometry message over ROS
+        # odom = Odometry()
+        # odom.header.frame_id = "odom"
+        # odom.child_frame_id = "base_footprint"
 
-        # set the position
-        odom.pose.pose.position.x = data.pose.pose.position.x - 0.225
-        odom.pose.pose.position.y = data.pose.pose.position.y
-        odom.pose.pose.position.z = data.pose.pose.position.z 
+        # # set the position
+        # odom.pose.pose.position.x = data.pose.pose.position.x - 0.225
+        # odom.pose.pose.position.y = data.pose.pose.position.y
+        # odom.pose.pose.position.z = data.pose.pose.position.z 
         
-        odom.pose.pose.orientation.x = 
-        odom.pose.pose.orientation.y = 
-        odom.pose.pose.orientation.z = 
-        odom.pose.pose.orientation.w = 
+        # odom.pose.pose.orientation.x = 
+        # odom.pose.pose.orientation.y = 
+        # odom.pose.pose.orientation.z = 
+        # odom.pose.pose.orientation.w = 
 
         # set the velocity
 
         # publish the message
-        self.odom_pub.publish(odom)
+        # self.odom_pub.publish(odom)
 
 if __name__ == '__main__':
     n = node()

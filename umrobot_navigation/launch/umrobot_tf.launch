@@ -1,0 +1,8 @@
+<launch>
+
+
+  <!-- Map server -->
+  <node pkg="umrobot_navigation" name="odom_to_tf" type="odom_to_tf.py"/>
+  <node pkg="door_angle" name="odom_tf" type="odom_tf"/>
+
+</launch>

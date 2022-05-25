@@ -18,11 +18,11 @@
   <!-- <param name="robot_description" textfile="$(find umrobot_description)/urdf/umrobot.xacro"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/> -->
 
-  <param name="/use_sim_time" value="false" />
+  <param name="/use_sim_time" value="true" />
   <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find umrobot_cartographer)/configuration_files
-          -configuration_basename umrobot.lua"
+          -configuration_basename umrobot2.lua"
       output="screen">
     <remap from="echoes" to="/scan"/>
   </node>
