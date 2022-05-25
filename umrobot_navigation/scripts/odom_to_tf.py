@@ -25,8 +25,7 @@ class node:
         
         t.transform.translation.x = data.pose.pose.position.x
         t.transform.translation.y = data.pose.pose.position.y
-        t.transform.translation.z = data.pose.pose.position.z
-        
+        t.transform.translation.z = data.pose.pose.position.z + 0.2
         
         t.transform.rotation.x = data.pose.pose.orientation.x
         t.transform.rotation.y = data.pose.pose.orientation.y
@@ -37,12 +36,11 @@ class node:
 
         t2.header.stamp = data.header.stamp
         t2.header.frame_id = "tmp"
-        t2.child_frame_id = "base_footprint"
+        t2.child_frame_id = "d435i_imu"
         
         t2.transform.translation.x = 0
         t2.transform.translation.y = 0
-        t2.transform.translation.z = 0.1
-        
+        t2.transform.translation.z = 0
         
         t2.transform.rotation.x = 0.299
         t2.transform.rotation.y = -0.299
